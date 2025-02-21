@@ -1,8 +1,8 @@
 body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    background: linear-gradient(to bottom, #d9f2ff, #b0e0e6);
+    background: url('background.jpg') no-repeat center center fixed;
+    background-size: cover;
 }
+
 
 .container {
     max-width: 300px;
