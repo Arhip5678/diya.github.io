@@ -1,43 +1,45 @@
-const correctPIN = "1234"; // Задайте правильный PIN-код
-let enteredPIN = "";
+document.addEventListener("DOMContentLoaded", () => {
+    const correctCode = "1234"; // Укажите нужный код
+    let inputCode = "";
 
-const dots = document.querySelectorAll(".dot");
-const keys = document.querySelectorAll(".key");
-const deleteButton = document.querySelector(".delete");
+    const dots = document.querySelectorAll(".dot");
+    const keys = document.querySelectorAll(".key");
+    const deleteButton = document.querySelector(".delete");
 
-keys.forEach(key => {
-    key.addEventListener("click", () => {
-        if (enteredPIN.length < 4) {
-            enteredPIN += key.getAttribute("data-value");
-            updateDots();
+    // Функция обновления точек
+    function updateDots() {
+        dots.forEach((dot, index) => {
+            dot.style.backgroundColor = index < inputCode.length ? "black" : "lightgray";
+        });
+
+        // Проверка кода
+        if (inputCode.length === correctCode.length) {
+            if (inputCode === correctCode) {
+                window.location.href = "success.html"; // Укажите нужную страницу
+            } else {
+                alert("Неверный код!");
+                inputCode = "";
+                updateDots();
+            }
         }
-        if (enteredPIN.length === 4) {
-            checkPIN();
-        }
+    }
+
+    // Обработчик ввода цифр
+    keys.forEach((key) => {
+        key.addEventListener("click", () => {
+            if (inputCode.length < correctCode.length) {
+                inputCode += key.dataset.value;
+                updateDots();
+            }
+        });
     });
-});
 
-deleteButton.addEventListener("click", () => {
-    enteredPIN = enteredPIN.slice(0, -1);
+    // Удаление последнего символа
+    deleteButton.addEventListener("click", () => {
+        inputCode = inputCode.slice(0, -1);
+        updateDots();
+    });
+
+    // Начальная инициализация
     updateDots();
 });
-
-function updateDots() {
-    dots.forEach((dot, index) => {
-        dot.classList.toggle("filled", index < enteredPIN.length);
-    });
-}
-
-function checkPIN() {
-    setTimeout(() => {
-        if (enteredPIN === correctPIN) {
-            alert("Доступ разрешен!");
-            // Здесь можно перенаправить на другую страницу
-            window.location.href = "dashboard.html";
-        } else {
-            alert("Неверный код!");
-            enteredPIN = "";
-            updateDots();
-        }
-    }, 300);
-}
