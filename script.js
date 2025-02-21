@@ -1,21 +1,20 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const correctCode = "1234"; // Укажите нужный код
+    const correctCode = "1234"; // Укажите правильный код
     let inputCode = "";
 
     const dots = document.querySelectorAll(".dot");
     const keys = document.querySelectorAll(".key");
     const deleteButton = document.querySelector(".delete");
 
-    // Функция обновления точек
     function updateDots() {
         dots.forEach((dot, index) => {
             dot.style.backgroundColor = index < inputCode.length ? "black" : "lightgray";
         });
 
-        // Проверка кода
+        // Проверяем код
         if (inputCode.length === correctCode.length) {
             if (inputCode === correctCode) {
-                window.location.href = "success.html"; // Укажите нужную страницу
+                window.location.href = "home/dashboard.html"; // Переход в папку home
             } else {
                 alert("Неверный код!");
                 inputCode = "";
@@ -24,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // Обработчик ввода цифр
+    // Обработчик нажатия кнопок
     keys.forEach((key) => {
         key.addEventListener("click", () => {
             if (inputCode.length < correctCode.length) {
@@ -34,12 +33,11 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // Удаление последнего символа
+    // Удаление последней цифры
     deleteButton.addEventListener("click", () => {
         inputCode = inputCode.slice(0, -1);
         updateDots();
     });
 
-    // Начальная инициализация
     updateDots();
 });
