@@ -14,7 +14,8 @@ document.addEventListener("DOMContentLoaded", () => {
         // Проверяем код
         if (inputCode.length === correctCode.length) {
             if (inputCode === correctCode) {
-                window.location.href = "home/dashboard.html"; // Переход в папку home
+                window.location.href = "/diya.github.io/home/dashboard.html";
+ // Переход в папку home
             } else {
                 alert("Неверный код!");
                 inputCode = "";
