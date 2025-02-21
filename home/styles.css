@@ -76,3 +76,9 @@ nav a {
     color: black;
     font-weight: bold;
 }
+
+img {
+    width: 100px; /* Или нужный размер */
+    height: 100px;
+    object-fit: cover; /* Обрезает изображение, сохраняя пропорции */
+}
