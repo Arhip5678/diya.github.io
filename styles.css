@@ -3,7 +3,6 @@ body {
     background-size: cover;
 }
 
-
 .container {
     max-width: 300px;
     margin: 100px auto;
@@ -11,6 +10,7 @@ body {
     background: white;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
 }
 
 h2 {
@@ -38,21 +38,51 @@ h2 {
 .keypad {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
+    gap: 15px;
     margin-top: 20px;
+    justify-items: center;
 }
 
-.key, .delete {
+/* Стили для кнопок */
+.key {
+    font-size: 22px;
+    font-weight: bold;
+    width: 70px;
+    height: 70px;
+    background: #f5f5f5; /* Светлый фон */
+    border: none;
+    border-radius: 50%; /* Делаем кнопки круглыми */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Добавляем тень */
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+}
+
+.key:hover {
+    background: #e0e0e0; /* Эффект при наведении */
+}
+
+.key:active {
+    transform: scale(0.95); /* Легкое уменьшение при нажатии */
+}
+
+/* Кнопка удаления */
+.delete {
     font-size: 20px;
-    padding: 15px;
-    background: white;
-    border: 1px solid gray;
-    border-radius: 50%;
+    width: 100px;
+    height: 50px;
+    background: #f5f5f5;
+    border: none;
+    border-radius: 25px; /* Овальная форма */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     cursor: pointer;
 }
 
-.delete {
-    grid-column: span 3;
+.delete:hover {
+    background: #e0e0e0;
+}
+
+.delete:active {
+    transform: scale(0.95);
 }
 
 #forgot {
